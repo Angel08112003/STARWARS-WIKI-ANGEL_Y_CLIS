@@ -1,0 +1,585 @@
+/* Definición de colores custom */
+:root {
+    --color-gunmetal: #1F2937; /* Gris Plomo Oscuro */
+    --color-star-yellow: #FFD700; /* Amarillo */
+    --color-light-plomo: #374151; /* Gris más claro para containers */
+    --color-text-light: #F9FAFB;
+    --color-gray-dark: #111827; /* Gris muy oscuro, casi negro */
+    --color-gray-light: #D1D5DB; /* Gris para texto secundario */
+    --color-original-yellow-hover: #ffe81f; /* Amarillo de hover original (casi blanco) */
+    --color-original-yellow-footer-hover: #E8AF05; /* Dorado/Amarillo del footer original */
+}
+
+/* Configuración para usar la fuente Inter */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+body {
+    font-family: 'Inter', sans-serif;
+    color: var(--color-text-light);
+    min-height: 100vh;
+    margin: 0;
+   
+    /* Fondo de Imagen Añadido */
+    background-image: url('https://cdn.wallpapersafari.com/15/33/GJ8e6P.png');
+    background-size: cover;
+	background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center center;
+
+}
+
+/* Contenedor principal - evitar el ancho total de la pantalla en desktop */
+.wiki-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 1rem; /* Padding base para móviles */
+}
+
+/* Estilos base para links y hover */
+a {
+    color: var(--color-star-yellow);
+    transition: color 0.2s; /* Eliminado text-shadow */
+    text-decoration: none;
+}
+/* Hover general para todos los enlaces que usen 'a' */
+a:hover {
+    color: var(--color-original-yellow-hover); /* El color amarillo claro de tu código original */
+    /* text-shadow: se movió a .register-btn:hover y a la navegación */
+}
+
+/* BOTÓN DE LLAMADA A LA ACCIÓN (Incluye "Descubre más aquí" y "Registro") */
+.register-btn {
+    background-color: var(--color-star-yellow);
+    color: var(--color-gunmetal);
+    font-weight: 700;
+    padding: 0.5rem 1rem;
+    border-radius: 0.375rem;
+    box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
+    transition: all 0.2s ease-in-out; /* Animación para todos los cambios */
+    text-transform: uppercase;
+    display: inline-block;
+    border: none;
+}
+.register-btn:hover {
+    background-color: #FACC15;
+    /* EFECTO DE BRILLO EN EL BOTÓN Y EN EL TEXTO */
+    box-shadow: 0 0 15px rgba(255, 232, 31, 0.8), 0 10px 15px -3px rgba(0,0,0,0.3); /* Brillo alrededor del botón */
+    text-shadow: 0 0 5px rgba(31, 41, 55, 0.4), 0 0 10px rgba(31, 41, 55, 0.2); /* Sutil brillo en el texto oscuro */
+    /* Se mantiene el color de texto para un mejor contraste */
+    color: var(--color-gunmetal);
+}
+
+/* ---------------------------------
+   2. HEADER
+   --------------------------------- */
+.main-header {
+    background-color: var(--color-light-plomo);
+    border-bottom: 2px solid var(--color-star-yellow);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+.main-header > .wiki-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+}
+
+@media (min-width: 768px) { /* md:flex-row */
+    .main-header > .wiki-container {
+        flex-direction: row;
+    }
+}
+
+.header-logo-group {
+    align-items: center;
+    gap: 0.75rem; /* space-x-3 */
+}
+
+.header-logo {
+    height: 40px; 
+	width: auto;
+    margin-right: 20px; 
+}
+
+.header-title {
+    font-size: 30px;
+    font-weight: 800; /* font-extrabold */
+    color: white;
+}
+
+.main-nav {
+    margin-top: 1rem; /* mt-4 */
+}
+@media (min-width: 768px) {
+    .main-nav {
+        margin-top: 0; /* md:mt-0 */
+    }
+}
+
+.main-nav ul {
+    display: flex;
+    gap: 1.5rem; /* space-x-6 */
+    font-size: 1.125rem; /* text-lg */
+    font-weight: 600; /* font-semibold */
+    list-style: none;
+    padding: 0;
+}
+
+.main-nav a {
+    color: white;
+    transition: color 0.2s, text-shadow 0.2s;
+}
+/* Hover específico de la navegación principal (Aplicando tu color y brillo) */
+.main-nav a:hover {
+    color: var(--color-original-yellow-hover);
+    /* Se mantiene el brillo aquí, ya que es parte del diseño de navegación */
+    text-shadow: 0 0 8px var(--color-original-yellow-hover), 0 0 10px rgba(255, 232, 31, 0.5); 
+}
+
+
+/* ---------------------------------
+   3. MAIN CONTENT
+   --------------------------------- */
+main {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+main > .wiki-container {
+    display: flex;
+    gap: 1.5rem; /* md:space-x-6 */
+    flex-direction: row-reverse; /* Cambia la dirección para que el sidebar esté a la derecha por defecto */
+}
+@media (max-width: 767px) {
+     main > .wiki-container {
+        flex-direction: column; /* En móvil, se apila */
+    }
+}
+
+
+/* Sidebar */
+.sidebar {
+    width: 100%;
+    flex-shrink: 0;
+    background-color: var(--color-light-plomo);
+    padding: 1rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1);
+    margin-bottom: 1.5rem;
+    border: 1px solid rgba(255, 215, 0, 0.2);
+}
+@media (min-width: 768px) {
+    .sidebar {
+        width: 16rem; /* md:w-64 */
+        margin-bottom: 0;
+    }
+}
+
+.sidebar h3 {
+    font-size: 1.125rem; /* text-lg */
+    font-weight: 700; /* font-bold */
+    color: var(--color-star-yellow);
+    margin-bottom: 0.75rem; /* mb-3 */
+}
+
+.sidebar p strong {
+    font-weight: 700;
+    color: white;
+    margin-bottom: 0.5rem; /* mb-2 */
+    display: block;
+}
+
+.sidebar ul, .related-posts {
+    list-style: none;
+    padding: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 0.875rem; /* text-sm */
+}
+.sidebar ul li {
+    margin-bottom: 0.25rem; /* space-y-1 */
+}
+
+.sidebar hr {
+    margin-top: 0.75rem; /* my-3 */
+    margin-bottom: 0.75rem;
+    border-color: rgba(255, 215, 0, 0.3);
+}
+
+.sidebar a {
+    color: white;
+    transition: color 0.2s, text-shadow 0.2s;
+    display: block;
+}
+/* Hover sidebar (Aplicando tu color y brillo) */
+.sidebar a:hover {
+    color: var(--color-original-yellow-footer-hover); /* Usando el dorado de tu código original */
+    text-shadow: 0 0 5px var(--color-original-yellow-footer-hover), 0 0 8px rgba(232, 175, 5, 0.5);
+}
+
+
+/* Contenido Principal Section */
+.main-content {
+    flex-grow: 1; /* flex-grow */
+    background-color: var(--color-light-plomo);
+    padding: 1.5rem; /* p-6 */
+    border-radius: 0.5rem; /* rounded-lg */
+    box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1);
+    border: 1px solid rgba(255, 215, 0, 0.2);
+}
+
+.content-title {
+    font-size: 1.875rem; /* text-3xl */
+    font-weight: 800; /* font-extrabold */
+    color: var(--color-star-yellow);
+    margin-bottom: 1rem; /* mb-4 */
+    border-bottom: 2px solid rgba(255, 215, 0, 0.5); /* border-b-2 border-star-yellow/50 */
+    padding-bottom: 0.5rem; /* pb-2 */
+}
+
+.content-paragraph {
+    color: #E5E7EB; /* text-gray-200 */
+    margin-bottom: 1.5rem; /* mb-6 */
+    line-height: 1.625; /* leading-relaxed */
+}
+
+/* Imagen de la Estrella de la Muerte */
+.image-container {
+    width: 100%;
+    max-width: 36rem; /* max-w-xl */
+    margin-left: auto; /* mx-auto */
+    margin-right: auto;
+    margin-bottom: 2rem; /* mb-8 */
+    border-radius: 0.5rem;
+    overflow: hidden;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); /* shadow-2xl */
+    border: 4px solid var(--color-gunmetal);
+}
+.image-container img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+/* Noticias */
+.news-title {
+    font-size: 1.5rem; /* text-2xl */
+    font-weight: 700; /* font-bold */
+    color: var(--color-star-yellow);
+    margin-bottom: 1rem; /* mb-4 */
+    border-bottom: 1px solid rgba(255, 215, 0, 0.5);
+    padding-bottom: 0.25rem; /* pb-1 */
+}
+
+.news-article {
+    padding: 1rem; /* p-4 */
+    margin-bottom: 1rem; /* mb-4 */
+    background-color: var(--color-gunmetal);
+    border-radius: 0.5rem;
+    border: 1px solid rgba(255, 215, 0, 0.1);
+    transition: box-shadow 0.2s;
+}
+.news-article:hover {
+    box-shadow: 0 10px 15px -3px rgba(245, 158, 11, 0.3); /* hover:shadow-yellow-500/30 */
+}
+
+.news-article h3 {
+    font-size: 1.25rem; /* text-xl */
+    font-weight: 600; /* font-semibold */
+    color: white;
+    margin-bottom: 0.25rem; /* mb-1 */
+}
+.news-article .date {
+    font-size: 0.75rem; /* text-xs */
+    color: var(--color-star-yellow);
+    margin-bottom: 0.5rem; /* mb-2 */
+}
+.news-article p {
+    font-size: 0.875rem; /* text-sm */
+    color: var(--color-gray-light); /* text-gray-300 */
+}
+.news-article a {
+    margin-top: 0.5rem; /* mt-2 */
+    display: inline-block; /* inline-block */
+    color: var(--color-star-yellow);
+    font-weight: 500; /* font-medium */
+    transition: color 0.2s, text-shadow 0.2s;
+}
+.news-article a:hover {
+    text-decoration: underline;
+    /* Se elimina el brillo, se usa el color general de hover */
+    color: var(--color-original-yellow-hover);
+    text-shadow: none;
+}
+
+/* Héroes y Villanos Section */
+.heroes-villains-title {
+    margin-top: 3rem; /* mt-12 */
+    text-align: center;
+}
+.heroes-villains-title h2 {
+    font-size: 1.875rem; /* text-3xl */
+    font-weight: 800; /* font-extrabold */
+    color: var(--color-star-yellow);
+    margin-bottom: 1.5rem; /* mb-6 */
+    border-bottom: 2px solid rgba(255, 215, 0, 0.5);
+    padding-bottom: 0.5rem;
+    display: inline-block;
+    padding-left: 1rem; /* px-4 */
+    padding-right: 1rem;
+}
+.heroes-villains-title p {
+    color: #D1D5DB;
+    max-width: 48rem; /* max-w-3xl */
+    margin: 0 auto 2.5rem; /* mx-auto mb-10 */
+}
+
+.subsection-title {
+    font-size: 1.5rem; /* text-2xl */
+    font-weight: 700; /* font-bold */
+    color: white;
+    text-align: center;
+    margin-bottom: 1.5rem; /* mb-6 */
+}
+
+/* Grid de Personajes */
+.character-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr)); /* grid-cols-2 */
+    gap: 1rem; /* gap-4 */
+    max-width: 900px; /* Limitar el ancho del grid para que se vea bien centrado */
+    margin: 0 auto;
+}
+@media (min-width: 768px) {
+    .character-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr)); /* md:grid-cols-4 */
+    }
+}
+
+/* Tarjeta de Personaje Base */
+.character-card {
+    background-color: var(--color-gunmetal);
+    padding: 0.5rem; /* p-2 */
+    border-radius: 0.5rem;
+    text-align: center;
+    box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
+    transition: box-shadow 0.2s;
+    cursor: pointer;
+    border: 2px solid transparent; /* Base para el border */
+}
+.character-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 0.375rem; /* rounded-md */
+    margin-bottom: 0.5rem; /* mb-2 */
+}
+.character-card p {
+    font-weight: 700; /* font-bold */
+    color: white;
+}
+.character-card a {
+    color: var(--color-star-yellow);
+    font-size: 0.875rem; /* text-sm */
+    font-weight: 500; /* font-medium */
+    display: block;
+    margin-top: 0.25rem; /* mt-1 */
+    transition: color 0.2s, text-shadow 0.2s;
+}
+/* Hover de enlaces en las tarjetas de personaje */
+.character-card a:hover {
+    color: var(--color-original-yellow-hover);
+    text-shadow: none; /* Se elimina el brillo */
+}
+
+/* Estilos Específicos para Rebeldes (Lado Luminoso) */
+.character-card-rebel {
+    border-color: rgba(16, 185, 129, 0.5); /* border-green-500/50 */
+}
+.character-card-rebel:hover {
+    box-shadow: 0 10px 15px -3px rgba(16, 185, 129, 0.5); /* hover:shadow-green-500/50 */
+}
+
+/* Estilos Específicos para Imperio (Lado Oscuro) */
+.character-card-empire {
+    border-color: rgba(239, 68, 68, 0.5); /* border-red-500/50 */
+}
+.character-card-empire:hover {
+    box-shadow: 0 10px 15px -3px rgba(239, 68, 68, 0.5); /* hover:shadow-red-500/50 */
+}
+
+/* ---------------------------------
+   4. FOOTER
+   --------------------------------- */
+footer {
+    background-color: black;
+    color: #9CA3AF; /* text-gray-400 */
+    padding-top: 2rem; /* py-8 */
+    padding-bottom: 2rem;
+    border-top: 2px solid rgba(255, 215, 0, 0.5); /* border-t-2 border-star-yellow/50 */
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr)); /* grid-cols-2 */
+    gap: 1.5rem; /* gap-6 */
+}
+@media (min-width: 768px) {
+    .footer-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr)); /* md:grid-cols-4 */
+    }
+    .footer-col:nth-child(1) {
+        grid-column: span 1 / span 1;
+    }
+}
+
+.footer-col h4 {
+    font-weight: 600; /* font-semibold */
+    color: white;
+    margin-bottom: 0.5rem; /* mb-2 */
+}
+.footer-col .copyright-title {
+    color: var(--color-star-yellow);
+    font-weight: 700; /* font-bold */
+}
+
+.footer-col p, .footer-col li {
+    font-size: 0.875rem; /* text-sm */
+}
+
+.footer-col ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.footer-col li {
+    margin-bottom: 0.25rem; /* space-y-1 */
+}
+
+.footer-col ul li a {
+    color: #ccc;
+    text-decoration: none;
+    /* Transición actualizada para suavizar el cambio de color y brillo */
+    transition: color 0.3s, text-shadow 0.3s;
+}
+/* Hover específico del footer (Aplicando tu color y brillo) */
+.footer-col ul li a:hover {
+    color: var(--color-original-yellow-footer-hover);
+    text-decoration: underline;
+    text-shadow: 0 0 5px var(--color-original-yellow-footer-hover), 0 0 8px rgba(232, 175, 5, 0.5);
+}
+
+.social-icons {
+    display: flex;
+    gap: 0.75rem; /* space-x-3 */
+    color: var(--color-star-yellow);
+    font-size: 1.25rem; /* text-xl */
+}
+.social-icons a {
+    transition: color 0.2s, text-shadow 0.2s; /* Asegurar transición de brillo */
+}
+.social-icons a:hover {
+    color: var(--color-original-yellow-hover);
+    text-shadow: 0 0 8px var(--color-original-yellow-hover), 0 0 10px rgba(255, 232, 31, 0.5);
+}
+
+/* ---------------------------------
+   5. Estilos de JavaScript (Interacciones de Tarjeta) - AÑADIDO
+   --------------------------------- */
+/* Estilo para la tarjeta de personaje seleccionada */
+.character-card.is-selected {
+    /* Mantiene el color de fondo y el borde base de la tarjeta */
+    background-color: var(--color-gunmetal); 
+    /* Efecto de 'brillo' o 'selección' más pronunciado (Amarillo Estrella) */
+    box-shadow: 0 0 25px rgba(255, 215, 0, 0.7), 0 0 40px rgba(255, 215, 0, 0.4);
+    /* Borde destacado para la selección */
+    border: 3px solid var(--color-star-yellow);
+    transform: scale(1.03); /* Ligeramente más grande al hacer clic */
+    transition: all 0.2s ease-in-out; /* Asegura la transición */
+}
+
+/* ---------------------------------
+   6. Botón de Desplazamiento (Scroll to Top) - AÑADIDO
+   --------------------------------- */
+/* Reutiliza la apariencia base del botón '.register-btn' */
+#scrollToTopBtn {
+    display: none; /* Oculto por defecto (JavaScript lo muestra) */
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000; /* Asegura que esté por encima de otros elementos */
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    cursor: pointer;
+    /* Aplicamos los estilos visuales base de .register-btn */
+    background-color: var(--color-star-yellow);
+    color: var(--color-gunmetal);
+    border: none;
+    border-radius: 4px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.3s ease;
+}
+
+#scrollToTopBtn:hover {
+    /* Se usa el color de hover del botón de registro para mantener consistencia */
+    background-color: #FACC15; 
+}
+
+
+/* ---------------------------------
+   7. Alternador de Modo (Luminoso/Oscuro) - AÑADIDO
+   --------------------------------- */
+.light-side {
+    /* Define nuevos colores para el "Lado Luminoso" */
+    --color-gunmetal: #F9FAFB; /* Fondo claro */
+    --color-star-yellow: #0077B6; /* Azul de la República/Jedi */
+    --color-light-plomo: #E5E7EB; /* Gris muy claro para containers */
+    --color-text-light: #1F2937; /* Texto oscuro */
+    --color-gray-dark: #FFFFFF; /* Blanco para fondo */
+    --color-gray-light: #4B5563; /* Gris oscuro para texto secundario */
+    --color-original-yellow-hover: #0096C7; /* Azul de hover */
+    --color-original-yellow-footer-hover: #005A8D; /* Azul más oscuro */
+    
+    /* Invertir el fondo principal */
+    background-image: none !important;
+    background-color: var(--color-gray-dark) !important;
+}
+
+/* Ajustes para elementos que necesitan cambio de color en el modo claro */
+.light-side body {
+    color: var(--color-text-light); /* Asegura que el texto principal sea oscuro */
+}
+
+.light-side .main-header,
+.light-side footer {
+    background-color: var(--color-light-plomo) !important;
+}
+
+.light-side .header-title {
+    color: var(--color-text-light); /* Título oscuro */
+}
+.light-side .main-nav a,
+.light-side .sidebar h3,
+.light-side .news-article h3 {
+    color: var(--color-text-light); /* Enlaces y títulos oscuros */
+}
+
+.light-side .news-article,
+.light-side .character-card {
+    background-color: var(--color-gunmetal); /* Fondos de tarjetas y noticias claros */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--color-light-plomo);
+}
+
+/* PELICULAS MAIN CONTENT */
+.main-content-pelis {
+    flex-grow: 1; /* flex-grow */
+    background-color: var(--color-light-plomo);
+    padding: 1.5rem; /* p-6 */
+	max-height: 80vh; /* Ejemplo: Limita la altura al 80% de la altura de la ventana */
+    overflow-y: auto;
+    border-radius: 0.5rem; /* rounded-lg */
+    box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1);
+    border: 1px solid rgba(255, 215, 0, 0.2);
+}
